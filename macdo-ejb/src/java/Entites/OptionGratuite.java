@@ -26,8 +26,8 @@ public class OptionGratuite implements Serializable {
     @ManyToMany(mappedBy = "OptionGratuites")
     private Collection<Menu> Menus;
     
-//    @ManyToMany(mappedBy = "OptionGratuites")
-//    private Collection<Produit> Produits;
+    @ManyToMany(mappedBy = "OptionGratuites")
+    private Collection<Produit> Produits;
 
     
     
@@ -56,13 +56,13 @@ public class OptionGratuite implements Serializable {
         this.Menus = Menus;
     }
 
-//    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> LigneDeCommandes, Collection<Menu> Menus, Collection<Produit> Produits) {
-//        this.nom = nom;
-//        this.description = description;
-//        this.LigneDeCommandes = LigneDeCommandes;
-//        this.Menus = Menus;
-//        this.Produits = Produits;
-//    }
+    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> LigneDeCommandes, Collection<Menu> Menus, Collection<Produit> Produits) {
+        this.nom = nom;
+        this.description = description;
+        this.LigneDeCommandes = LigneDeCommandes;
+        this.Menus = Menus;
+        this.Produits = Produits;
+    }
     
     
     
@@ -114,13 +114,13 @@ public class OptionGratuite implements Serializable {
         this.Menus = Menus;
     }
 
-//    public Collection<Produit> getProduits() {
-//        return Produits;
-//    }
-//
-//    public void setProduits(Collection<Produit> Produits) {
-//        this.Produits = Produits;
-//    }
+    public Collection<Produit> getProduits() {
+        return Produits;
+    }
+
+    public void setProduits(Collection<Produit> Produits) {
+        this.Produits = Produits;
+    }
     
     
     

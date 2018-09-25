@@ -21,8 +21,8 @@ public class Element implements Serializable {
     @ManyToMany(mappedBy = "Elements")
     private Collection<LigneDeCommande> LigneDeCommandes;
     
-//    @ManyToMany(mappedBy = "Elements")
-//    private Collection<Produit> Produits;
+    @ManyToMany(mappedBy = "Elements")
+    private Collection<Produit> Produits;
     
     
 
@@ -38,11 +38,11 @@ public class Element implements Serializable {
         this.LigneDeCommandes = LigneDeCommandes;
     }
 
-//    public Element(String nom, Collection<LigneDeCommande> LigneDeCommandes, Collection<Produit> Produits) {
-//        this.nom = nom;
-//        this.LigneDeCommandes = LigneDeCommandes;
-//        this.Produits = Produits;
-//    }
+    public Element(String nom, Collection<LigneDeCommande> LigneDeCommandes, Collection<Produit> Produits) {
+        this.nom = nom;
+        this.LigneDeCommandes = LigneDeCommandes;
+        this.Produits = Produits;
+    }
     
     
     
@@ -74,14 +74,14 @@ public class Element implements Serializable {
         this.LigneDeCommandes = LigneDeCommandes;
     }
 
-//    public Collection<Produit> getProduits() {
-//        return Produits;
-//    }
-//
-//    public void setProduits(Collection<Produit> Produits) {
-//        this.Produits = Produits;
-//    }
-//    
+    public Collection<Produit> getProduits() {
+        return Produits;
+    }
+
+    public void setProduits(Collection<Produit> Produits) {
+        this.Produits = Produits;
+    }
+    
     
     
     

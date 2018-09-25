@@ -5,8 +5,10 @@
  */
 package controlleur;
 
+import controlleur.secondaires.sousController;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Enumeration;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,21 +29,49 @@ public class controler extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    
+     HashMap<String, sousController> map;
+
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        
+        map = new HashMap();
+        for (Enumeration<String> e = this.getInitParameterNames();
+                e.hasMoreElements();) {
+            String name = e.nextElement();
+            String value = this.getInitParameter(name);
+//            System.out.println(">>>"+ name+"/"+value);
+            try {
+                sousController s = (sousController) Class.forName(value).newInstance();
+                map.put(name, s);
+            } catch (ClassNotFoundException ex) {
+                System.out.println("ClassNotFound>>>>" + ex.getMessage());
+            } catch (InstantiationException ex) {
+                System.out.println("Instantiation>>>>" + ex.getMessage());
+            } catch (IllegalAccessException ex) {
+                System.out.println("IllegalAccess>>>>" + ex.getMessage());
+            }
+        }
+//        System.out.println(">>>>"+ map.size());
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet controler</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet controler at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+         response.setContentType("text/html;charset=UTF-8");
+        String url = "/WEB-INF/jspMain3.jsp";
+
+        if (request.getParameter("section") != null) {
+            String name = request.getParameter("section");
+//            System.out.println(">>>>>><"+ name);
+            if (map.containsKey(name)) {
+                sousController s = map.get(name);
+                url = s.execute(request, response);
+            }
         }
+
+        request.getRequestDispatcher(url).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

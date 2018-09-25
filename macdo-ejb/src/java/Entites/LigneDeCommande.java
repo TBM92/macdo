@@ -36,13 +36,13 @@ public class LigneDeCommande implements Serializable {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Commande commande;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    private Menu menu;
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "ligneDeCommande")
+    private Collection<Menu> menus;
     
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "ligneParent")
     private Collection<LigneDeCommande> sousLignesDeCommandes;
     
-    @OneToMany(mappedBy = "sousLignesDeCommandes")
+    @ManyToOne
     private LigneDeCommande ligneParent;
     
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
@@ -53,6 +53,9 @@ public class LigneDeCommande implements Serializable {
     
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Collection<Element> elements;
+    
+    @ManyToOne
+    private Produit produit;
     
     public LigneDeCommande() {
         sousLignesDeCommandes = new ArrayList<>();
@@ -68,16 +71,24 @@ public class LigneDeCommande implements Serializable {
         this.tvaTaux = tvaTaux;
     }
 
-    public LigneDeCommande(Integer quantite, Float prix, Float tvaTaux, Commande commande, Menu menu) {
+    public LigneDeCommande(Integer quantite, Float prix, Float tvaTaux, Commande commande) {
         this();
         this.quantite = quantite;
         this.prix = prix;
         this.tvaTaux = tvaTaux;
         this.commande = commande;
-        this.menu = menu;
     }
-    
-    
+
+    public LigneDeCommande(Integer quantite, Float prix, Float tvaTaux, Commande commande, LigneDeCommande ligneParent, Collection<Element> elements, Produit produit) {
+        this();
+        this.quantite = quantite;
+        this.prix = prix;
+        this.tvaTaux = tvaTaux;
+        this.commande = commande;
+        this.ligneParent = ligneParent;
+        this.elements = elements;
+        this.produit = produit;
+    }
 
     public Long getId() {
         return id;
@@ -119,12 +130,20 @@ public class LigneDeCommande implements Serializable {
         this.commande = commande;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public Collection<Menu> getMenus() {
+        return menus;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setMenus(Collection<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 
     public Collection<LigneDeCommande> getSousLignesDeCommandes() {
