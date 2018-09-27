@@ -1,6 +1,7 @@
 package Entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,29 +20,34 @@ public class Element implements Serializable {
     private String nom;
     
     @ManyToMany(mappedBy = "Elements")
-    private Collection<LigneDeCommande> LigneDeCommandes;
+    private Collection<LigneDeCommande> ligneDeCommandes;
     
     @ManyToMany(mappedBy = "Elements")
-    private Collection<Produit> Produits;
+    private Collection<Produit> produits;
     
     
 
     public Element() {
+        ligneDeCommandes = new ArrayList<>();
+        produits = new ArrayList<>();
     }
 
     public Element(String nom) {
+        this();
         this.nom = nom;
     }
 
     public Element(String nom, Collection<LigneDeCommande> LigneDeCommandes) {
+        this();
         this.nom = nom;
-        this.LigneDeCommandes = LigneDeCommandes;
+        this.ligneDeCommandes = LigneDeCommandes;
     }
 
     public Element(String nom, Collection<LigneDeCommande> LigneDeCommandes, Collection<Produit> Produits) {
+        this();
         this.nom = nom;
-        this.LigneDeCommandes = LigneDeCommandes;
-        this.Produits = Produits;
+        this.ligneDeCommandes = LigneDeCommandes;
+        this.produits = Produits;
     }
     
     
@@ -67,19 +73,19 @@ public class Element implements Serializable {
     }
 
     public Collection<LigneDeCommande> getLigneDeCommandes() {
-        return LigneDeCommandes;
+        return ligneDeCommandes;
     }
 
     public void setLigneDeCommandes(Collection<LigneDeCommande> LigneDeCommandes) {
-        this.LigneDeCommandes = LigneDeCommandes;
+        this.ligneDeCommandes = LigneDeCommandes;
     }
 
     public Collection<Produit> getProduits() {
-        return Produits;
+        return produits;
     }
 
     public void setProduits(Collection<Produit> Produits) {
-        this.Produits = Produits;
+        this.produits = Produits;
     }
     
     

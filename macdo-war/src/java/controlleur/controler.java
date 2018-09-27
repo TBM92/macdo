@@ -60,17 +60,18 @@ public class controler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          response.setContentType("text/html;charset=UTF-8");
-        String url = "/WEB-INF/jspMain3.jsp";
-
+        String url = "/WEB-INF/home.jsp";
+        System.out.println("section : "+request.getParameter("section"));
         if (request.getParameter("section") != null) {
             String name = request.getParameter("section");
 //            System.out.println(">>>>>><"+ name);
             if (map.containsKey(name)) {
                 sousController s = map.get(name);
+                System.out.println("il est bien la le controller "+name);
                 url = s.execute(request, response);
             }
         }
-
+        System.out.println(url);
         request.getRequestDispatcher(url).include(request, response);
     }
 

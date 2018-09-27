@@ -1,6 +1,8 @@
 package Entites;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,47 +23,55 @@ public class OptionGratuite implements Serializable {
     private String description;
     
     @ManyToMany(mappedBy = "OptionGratuites")
-    private Collection<LigneDeCommande> LigneDeCommandes;
+    private Collection<LigneDeCommande> ligneDeCommandes;
     
     @ManyToMany(mappedBy = "OptionGratuites")
-    private Collection<Menu> Menus;
+    private Collection<Menu> menus;
     
     @ManyToMany(mappedBy = "OptionGratuites")
-    private Collection<Produit> Produits;
+    private Collection<Produit> produits;
 
     
     
     public OptionGratuite() {
+        ligneDeCommandes = new ArrayList<>();
+        menus = new ArrayList<>();
+        produits = new ArrayList<>();
     }
 
     public OptionGratuite(String nom) {
+        this();
         this.nom = nom;
     }
 
     public OptionGratuite(String nom, String description) {
+        this();
         this.nom = nom;
         this.description = description;
     }
 
-    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> LigneDeCommandes) {
+    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> ligneDeCommandes) {
+        this();
         this.nom = nom;
         this.description = description;
-        this.LigneDeCommandes = LigneDeCommandes;
+        this.ligneDeCommandes = ligneDeCommandes;
     }
 
-    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> LigneDeCommandes, Collection<Menu> Menus) {
+    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> ligneDeCommandes, Collection<Menu> Menus) {
+        this();
         this.nom = nom;
         this.description = description;
-        this.LigneDeCommandes = LigneDeCommandes;
-        this.Menus = Menus;
+        this.ligneDeCommandes = ligneDeCommandes;
+        this.menus = Menus;
     }
 
-    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> LigneDeCommandes, Collection<Menu> Menus, Collection<Produit> Produits) {
+    public OptionGratuite(String nom, String description, Collection<LigneDeCommande> ligneDeCommandes, Collection<Menu> Menus, Collection<Produit> Produits) {
+        this();
         this.nom = nom;
         this.description = description;
-        this.LigneDeCommandes = LigneDeCommandes;
-        this.Menus = Menus;
-        this.Produits = Produits;
+        this.ligneDeCommandes = ligneDeCommandes;
+        this.menus = Menus;
+        this.produits = Produits;
     }
     
     
@@ -99,27 +109,27 @@ public class OptionGratuite implements Serializable {
     }
 
     public Collection<LigneDeCommande> getLigneDeCommandes() {
-        return LigneDeCommandes;
+        return ligneDeCommandes;
     }
 
-    public void setLigneDeCommandes(Collection<LigneDeCommande> LigneDeCommandes) {
-        this.LigneDeCommandes = LigneDeCommandes;
+    public void setLigneDeCommandes(Collection<LigneDeCommande> ligneDeCommandes) {
+        this.ligneDeCommandes = ligneDeCommandes;
     }
 
     public Collection<Menu> getMenus() {
-        return Menus;
+        return menus;
     }
 
-    public void setMenus(Collection<Menu> Menus) {
-        this.Menus = Menus;
+    public void setMenus(Collection<Menu> menus) {
+        this.menus = menus;
     }
 
     public Collection<Produit> getProduits() {
-        return Produits;
+        return produits;
     }
 
-    public void setProduits(Collection<Produit> Produits) {
-        this.Produits = Produits;
+    public void setProduits(Collection<Produit> produits) {
+        this.produits = produits;
     }
     
     

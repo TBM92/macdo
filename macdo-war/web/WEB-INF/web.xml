@@ -3,22 +3,24 @@
     <servlet>
         <servlet-name>controler</servlet-name>
         <servlet-class>controlleur.controler</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CreationDonnees</servlet-name>
-        <servlet-class>controlleur.secondaires.CreationDonnees</servlet-class>
+        <init-param>
+            <param-name>CreationDonnees</param-name>
+            <param-value>controlleur.secondaires.CreationDonnees</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>controler</servlet-name>
         <url-pattern>/controler</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CreationDonnees</servlet-name>
-        <url-pattern>/CreationDonnees</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <ejb-local-ref>
+        <ejb-ref-name>CreationDonnees</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>Beans.CreationDonneesLocal</local>
+        <ejb-link>macdo-ejb.jar#CreationDonnees</ejb-link>
+    </ejb-local-ref>
 </web-app>

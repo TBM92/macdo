@@ -1,6 +1,7 @@
 package Entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,49 +24,57 @@ public class SupplementPayant implements Serializable {
     private Float prix;
     
     @ManyToMany(mappedBy = "SupplementPayants")
-    private Collection<LigneDeCommande> LigneDeCommandes;
+    private Collection<LigneDeCommande> ligneDeCommandes;
     
     @ManyToMany(mappedBy = "SupplementPayants")
-    private Collection<Produit> Produits;
+    private Collection<Produit> produits;
     
     
 
     public SupplementPayant() {
+        ligneDeCommandes = new ArrayList<>();
+        produits = new ArrayList<>();
     }
 
     public SupplementPayant(String nom) {
+        this();
         this.nom = nom;
     }
 
     public SupplementPayant(String nom, Float prix) {
+        this();
         this.nom = nom;
         this.prix = prix;
     }
 
     public SupplementPayant(String nom, String description) {
+        this();
         this.nom = nom;
         this.description = description;
     }
 
     public SupplementPayant(String nom, String description, Float prix) {
+        this();
         this.nom = nom;
         this.description = description;
         this.prix = prix;
     }
 
     public SupplementPayant(String nom, String description, Float prix, Collection<LigneDeCommande> LigneDeCommandes) {
+        this();
         this.nom = nom;
         this.description = description;
         this.prix = prix;
-        this.LigneDeCommandes = LigneDeCommandes;
+        this.ligneDeCommandes = LigneDeCommandes;
     }
 
     public SupplementPayant(String nom, String description, Float prix, Collection<LigneDeCommande> LigneDeCommandes, Collection<Produit> Produits) {
+        this();
         this.nom = nom;
         this.description = description;
         this.prix = prix;
-        this.LigneDeCommandes = LigneDeCommandes;
-        this.Produits = Produits;
+        this.ligneDeCommandes = LigneDeCommandes;
+        this.produits = Produits;
     }
     
     
@@ -108,19 +117,19 @@ public class SupplementPayant implements Serializable {
     }
 
     public Collection<LigneDeCommande> getLigneDeCommandes() {
-        return LigneDeCommandes;
+        return ligneDeCommandes;
     }
 
     public void setLigneDeCommandes(Collection<LigneDeCommande> LigneDeCommandes) {
-        this.LigneDeCommandes = LigneDeCommandes;
+        this.ligneDeCommandes = LigneDeCommandes;
     }
 
     public Collection<Produit> getProduits() {
-        return Produits;
+        return produits;
     }
 
     public void setProduits(Collection<Produit> Produits) {
-        this.Produits = Produits;
+        this.produits = Produits;
     }
     
     

@@ -27,6 +27,7 @@ public class Produit implements Serializable {
     @Column(nullable = false)
     private Float prix;
     private Integer statut;
+    @Column(length = 5000)
     private String description;
     private String image;
 
@@ -96,16 +97,28 @@ public class Produit implements Serializable {
         return serialVersionUID;
     }
 
+    public void setSupplementPayants(Collection<SupplementPayant> supplementPayants) {
+        this.supplementPayants = supplementPayants;
+    }
+
+    public void setOptionGratuites(Collection<OptionGratuite> optionGratuites) {
+        this.optionGratuites = optionGratuites;
+    }
+
+    
+
+    public Integer getStatut() {
+        return statut;
+    }
+
+    
+    
     public String getNom() {
         return nom;
     }
 
     public float getPrix() {
         return prix;
-    }
-
-    public int getStatut() {
-        return statut;
     }
 
     public String getDescription() {

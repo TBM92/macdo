@@ -42,7 +42,7 @@ public class LigneDeCommande implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "ligneParent")
     private Collection<LigneDeCommande> sousLignesDeCommandes;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private LigneDeCommande ligneParent;
     
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
@@ -54,7 +54,7 @@ public class LigneDeCommande implements Serializable {
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Collection<Element> elements;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Produit produit;
     
     public LigneDeCommande() {
