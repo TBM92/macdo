@@ -24,7 +24,7 @@ public class Statut implements Serializable {
     private String nom;
 
     //Associations
-    @OneToMany(mappedBy = "statuts")
+    @OneToMany(mappedBy = "statut")
     private Collection<Produit> produits;
 
     //Constructeurs

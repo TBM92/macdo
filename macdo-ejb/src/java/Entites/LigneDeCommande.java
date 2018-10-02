@@ -186,15 +186,21 @@ public class LigneDeCommande implements Serializable {
         this.elements = elements;
     }
 
-    
-    
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 43 * hash + Objects.hashCode(this.id);
-        hash = 43 * hash + Objects.hashCode(this.quantite);
-        hash = 43 * hash + Objects.hashCode(this.prix);
-        hash = 43 * hash + Objects.hashCode(this.tvaTaux);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.quantite);
+        hash = 41 * hash + Objects.hashCode(this.prix);
+        hash = 41 * hash + Objects.hashCode(this.tvaTaux);
+        hash = 41 * hash + Objects.hashCode(this.commande);
+        hash = 41 * hash + Objects.hashCode(this.menus);
+        hash = 41 * hash + Objects.hashCode(this.sousLignesDeCommandes);
+        hash = 41 * hash + Objects.hashCode(this.ligneParent);
+        hash = 41 * hash + Objects.hashCode(this.optionGratuites);
+        hash = 41 * hash + Objects.hashCode(this.supplementPayants);
+        hash = 41 * hash + Objects.hashCode(this.elements);
+        hash = 41 * hash + Objects.hashCode(this.produit);
         return hash;
     }
 
@@ -219,16 +225,37 @@ public class LigneDeCommande implements Serializable {
         if (!Objects.equals(this.tvaTaux, other.tvaTaux)) {
             return false;
         }
+        if (!Objects.equals(this.commande, other.commande)) {
+            return false;
+        }
+        if (!Objects.equals(this.menus, other.menus)) {
+            return false;
+        }
+        if (!Objects.equals(this.sousLignesDeCommandes, other.sousLignesDeCommandes)) {
+            return false;
+        }
+        if (!Objects.equals(this.ligneParent, other.ligneParent)) {
+            return false;
+        }
+        if (!Objects.equals(this.optionGratuites, other.optionGratuites)) {
+            return false;
+        }
+        if (!Objects.equals(this.supplementPayants, other.supplementPayants)) {
+            return false;
+        }
+        if (!Objects.equals(this.elements, other.elements)) {
+            return false;
+        }
+        if (!Objects.equals(this.produit, other.produit)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "LigneDeCommande{" + "id=" + id + ", quantite=" + quantite + ", prix=" + prix + ", tvaTaux=" + tvaTaux + '}';
+        return "LigneDeCommande{" + "id=" + id + ", quantite=" + quantite + ", prix=" + prix + ", tvaTaux=" + tvaTaux + ", commande=" + commande + ", menus=" + menus + ", sousLignesDeCommandes=" + sousLignesDeCommandes + ", ligneParent=" + ligneParent + ", optionGratuites=" + optionGratuites + ", supplementPayants=" + supplementPayants + ", elements=" + elements + ", produit=" + produit + '}';
     }
-    
-    
-
     
     
 }

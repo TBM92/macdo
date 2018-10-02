@@ -7,6 +7,15 @@
             <param-name>CreationDonnees</param-name>
             <param-value>controlleur.secondaires.CreationDonnees</param-value>
         </init-param>
+        <init-param>
+
+            <param-name>MainTop</param-name>
+            <param-value>controlleur.secondaires.MainTop</param-value>
+        </init-param>
+  <init-param>
+     <param-name>MenuGaucheCtrl</param-name>
+            <param-value>controlleur.secondaires.MenuGaucheCtrl</param-value>
+    </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>controler</servlet-name>
@@ -22,5 +31,11 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>Beans.CreationDonneesLocal</local>
         <ejb-link>macdo-ejb.jar#CreationDonnees</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>GestionPanier</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>Beans.GestionPanierLocal</local>
+        <ejb-link>macdo-ejb.jar#GestionPanier</ejb-link>
     </ejb-local-ref>
 </web-app>

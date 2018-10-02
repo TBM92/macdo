@@ -5,15 +5,13 @@
  */
 package Beans;
 
-import javax.ejb.Stateless;
+import javax.ejb.Local;
 
 /**
  *
  * @author cdi312
  */
-@Stateless
-public class Panier implements PanierLocal {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+@Local
+public interface GestionCatalogueLocal {
+    
 }

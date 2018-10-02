@@ -3,6 +3,7 @@ package Entites;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,6 @@ public class Produit implements Serializable {
     private String nom;
     @Column(nullable = false)
     private Float prix;
-    private Integer statut;
     @Column(length = 5000)
     private String description;
     private String image;
@@ -39,7 +39,7 @@ public class Produit implements Serializable {
     private Type type;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Statut statuts;
+    private Statut statut;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Collection<Propriete> proprietes;
@@ -64,8 +64,16 @@ public class Produit implements Serializable {
        optionGratuites = new ArrayList();
        ligneDeCommandes = new ArrayList();
     }
+    
+    public Produit(String nom, Float prix, String description, String image) {
+        this();
+        this.nom = nom;
+        this.prix = prix;
+        this.description = description;
+        this.image = image;
+    }
 
-    public Produit(String nom, Float prix, Integer statut, String description, String image) {
+    public Produit(String nom, Float prix, Statut statut, String description, String image) {
         this();
         this.nom = nom;
         this.prix = prix;
@@ -74,7 +82,7 @@ public class Produit implements Serializable {
         this.image = image;
     }
 
-    public Produit(String nom, Float prix, Integer statut, String description, String image, Tva tva, Type type, Statut statuts, Collection<Propriete> proprietes, Collection<Element> elements, Collection<SupplementPayant> supplementPayants, Collection<OptionGratuite> optionGratuites, Collection<LigneDeCommande> ligneDeCommandes) {
+    public Produit(String nom, Float prix, Statut statut, String description, String image, Tva tva, Type type, Collection<Propriete> proprietes, Collection<Element> elements, Collection<SupplementPayant> supplementPayants, Collection<OptionGratuite> optionGratuites, Collection<LigneDeCommande> ligneDeCommandes) {
         this();
         this.nom = nom;
         this.prix = prix;
@@ -83,7 +91,6 @@ public class Produit implements Serializable {
         this.image = image;
         this.tva = tva;
         this.type = type;
-        this.statuts = statuts;
         this.proprietes = proprietes;
         this.elements = elements;
         this.supplementPayants = supplementPayants;
@@ -107,7 +114,7 @@ public class Produit implements Serializable {
 
     
 
-    public Integer getStatut() {
+    public Statut getStatut() {
         return statut;
     }
 
@@ -138,7 +145,7 @@ public class Produit implements Serializable {
         this.prix = prix;
     }
 
-    public void setStatut(Integer statut) {
+    public void setStatut(Statut statut) {
         this.statut = statut;
     }
 
@@ -207,20 +214,82 @@ public class Produit implements Serializable {
         this.type = type;
     }
 
-    public Statut getStatuts() {
-        return statuts;
-    }
-
-    public void setStatuts(Statut statuts) {
-        this.statuts = statuts;
-    }
-
     public Collection<LigneDeCommande> getLigneDeCommandes() {
         return ligneDeCommandes;
     }
 
     public void setLigneDeCommandes(Collection<LigneDeCommande> ligneDeCommandes) {
         this.ligneDeCommandes = ligneDeCommandes;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
+        hash = 47 * hash + Objects.hashCode(this.nom);
+        hash = 47 * hash + Objects.hashCode(this.prix);
+        hash = 47 * hash + Objects.hashCode(this.description);
+        hash = 47 * hash + Objects.hashCode(this.image);
+        hash = 47 * hash + Objects.hashCode(this.tva);
+        hash = 47 * hash + Objects.hashCode(this.type);
+        hash = 47 * hash + Objects.hashCode(this.statut);
+        hash = 47 * hash + Objects.hashCode(this.proprietes);
+        hash = 47 * hash + Objects.hashCode(this.elements);
+        hash = 47 * hash + Objects.hashCode(this.supplementPayants);
+        hash = 47 * hash + Objects.hashCode(this.optionGratuites);
+        hash = 47 * hash + Objects.hashCode(this.ligneDeCommandes);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Produit other = (Produit) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
+        }
+        if (!Objects.equals(this.prix, other.prix)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.image, other.image)) {
+            return false;
+        }
+        if (!Objects.equals(this.tva, other.tva)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (!Objects.equals(this.statut, other.statut)) {
+            return false;
+        }
+        if (!Objects.equals(this.proprietes, other.proprietes)) {
+            return false;
+        }
+        if (!Objects.equals(this.elements, other.elements)) {
+            return false;
+        }
+        if (!Objects.equals(this.supplementPayants, other.supplementPayants)) {
+            return false;
+        }
+        if (!Objects.equals(this.optionGratuites, other.optionGratuites)) {
+            return false;
+        }
+        if (!Objects.equals(this.ligneDeCommandes, other.ligneDeCommandes)) {
+            return false;
+        }
+        return true;
     }
     
     
