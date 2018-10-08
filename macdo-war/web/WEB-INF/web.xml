@@ -23,6 +23,10 @@
             <param-name>CatalogueCtrl</param-name>
             <param-value>controlleur.secondaires.CatalogueCtrl</param-value>
         </init-param>
+        <init-param>       
+            <param-name>HomeCtrl</param-name>
+            <param-value>controlleur.secondaires.HomeCtrl</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>controler</servlet-name>

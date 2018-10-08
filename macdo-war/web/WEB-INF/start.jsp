@@ -14,6 +14,6 @@
         <c:url value="controler?section=MainTop" var="top"/>
         <c:import url="${top}"/>
 
-        <h1><a href="controler?section=CatalogueCtrl">Cliquez pour commander</a></h1>
+        <h1><a href="controler?section=HomeCtrl">Cliquez pour commander</a></h1>
     </body>
 </html>

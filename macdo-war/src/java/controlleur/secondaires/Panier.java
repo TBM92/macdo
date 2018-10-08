@@ -29,15 +29,15 @@ public class Panier implements sousController {
         gestionPanier = (GestionPanierLocal) session.getAttribute("gestionPanier");
         if (gestionPanier == null) {
             gestionPanier = lookupGestionPanierLocal();
+            session.setAttribute("gestionPanier", gestionPanier);
         }
         
         System.out.println(">>>>>>>>>>>>>>>"+gestionPanier);
         
-        gestionPanier.addProduit(1L);
-        //gestionPanier.addProduit(2L);
-        //gestionPanier.addProduit(3L);
+        gestionPanier.addProduitInPanierById(1L);
+        gestionPanier.addProduitInPanierById(2L);
+        gestionPanier.addProduitInPanierById(3L);
         
-        session.setAttribute("gestionPanier", gestionPanier);
         //session.setAttribute("panier", gestionPanier.getPanier());
         
         System.out.println("avant le webinf : "+gestionPanier.getPanier());

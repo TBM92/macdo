@@ -89,7 +89,7 @@ public class GestionPanier implements GestionPanierLocal {
     }
 
     @Override
-    public void addProduit(Long id) {
+    public void addProduitInPanierById(Long id) {
         
         Produit produit = getProduitById(id);
         System.out.println("panier >>>>>  :"+ panier +"produit :>>>> "+produit);
