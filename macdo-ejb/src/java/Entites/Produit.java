@@ -296,7 +296,8 @@ public class Produit implements Serializable {
     //Autres
     @Override
     public String toString() {
-        return "Entites.Produit[ id=" + id + " ]";
+        return "Produit{" + "id=" + id + ", nom=" + nom + ", prix=" + prix + ", description=" + description + ", image=" + image + ", tva=" + tva + ", type=" + type + ", statut=" + statut + ", proprietes=" + proprietes + ", elements=" + elements + ", supplementPayants=" + supplementPayants + ", optionGratuites=" + optionGratuites + ", ligneDeCommandes=" + ligneDeCommandes + '}';
     }
+
 
 }

@@ -35,12 +35,14 @@ public class Menu implements Serializable{
     
     private Float prix;
     
+    @Column(length = 1000)
     private String description;
     
+    @Column(length = 1000)
     private String image;
     
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    private LigneDeCommande ligneDeCommande;
+    @OneToMany(mappedBy = "menu")
+    private Collection<LigneDeCommande> ligneDeCommandes;
     
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Collection<OptionGratuite> optionGratuites;
@@ -53,6 +55,7 @@ public class Menu implements Serializable{
 
     public Menu() {
         optionGratuites = new ArrayList<>();
+        ligneDeCommandes = new ArrayList<>();
     }
 
     public Menu(String nom, Float prix, String description, String image) {
@@ -63,16 +66,15 @@ public class Menu implements Serializable{
         this.image = image;
     }
 
-    public Menu(String nom, Float prix, String description, String image, LigneDeCommande ligneDeCommande, Type type) {
-        this();
+    public Menu(String nom, Float prix, String description, String image, Type type, Tva tva) {
         this.nom = nom;
         this.prix = prix;
         this.description = description;
         this.image = image;
-        this.ligneDeCommande = ligneDeCommande;
         this.type = type;
+        this.tva = tva;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -113,12 +115,12 @@ public class Menu implements Serializable{
         this.image = image;
     }
 
-    public LigneDeCommande getLigneDeCommande() {
-        return ligneDeCommande;
+    public Collection<LigneDeCommande> getLigneDeCommandes() {
+        return ligneDeCommandes;
     }
 
-    public void setLigneDeCommande(LigneDeCommande ligneDeCommande) {
-        this.ligneDeCommande = ligneDeCommande;
+    public void setLigneDeCommandes(Collection<LigneDeCommande> ligneDeCommandes) {
+        this.ligneDeCommandes = ligneDeCommandes;
     }
 
     public Type getType() {

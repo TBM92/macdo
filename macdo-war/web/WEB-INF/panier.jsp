@@ -1,9 +1,5 @@
-<%-- 
-    Document   : panier
-    Created on : 2 oct. 2018, 14:10:18
-    Author     : cdi314
---%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +9,10 @@
     </head>
     <body>
         <h1>Panier</h1>
+        <c:forEach var="p" items="${gestionPanier.panier}">
+            ${p.produit.nom} ${p.prix}
+            <br>
+        </c:forEach>
         
     </body>
 </html>

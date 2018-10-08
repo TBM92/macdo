@@ -11,6 +11,10 @@
             <c:url value="controler?section=CreationDonnees" var="url02" />
             <a class="nav-link" href="${url02}">creer les données</a>
         </li>
+        <li class="nav-item">
+            <c:url value="controler?section=Panier" var="url03" />
+            <a class="nav-link" href="${url03}">Panier</a>
+        </li>
         <!-- Dropdown -->
 <!--        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

@@ -53,7 +53,8 @@ public class controler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          response.setContentType("text/html;charset=UTF-8");
-        String url = "/WEB-INF/home.jsp";
+//        String url = "/WEB-INF/home.jsp";
+        String url = "/WEB-INF/start.jsp";
         System.out.println("section : "+request.getParameter("section"));
         if (request.getParameter("section") != null) {
             String name = request.getParameter("section");
@@ -65,6 +66,7 @@ public class controler extends HttpServlet {
             }
         }
         System.out.println(url);
+        url = response.encodeURL(url);
         request.getRequestDispatcher(url).include(request, response);
     }
 

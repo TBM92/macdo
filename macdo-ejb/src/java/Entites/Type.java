@@ -22,6 +22,10 @@ public class Type implements Serializable {
     @Column(nullable = false)
     private String nom;
 
+    @Column(length = 1000)
+    private String image;
+    
+    
     //Associations
     @OneToMany(mappedBy = "type")
     private Collection<Produit> produits;
@@ -37,6 +41,11 @@ public class Type implements Serializable {
 
     public Type(String nom) {
         this.nom = nom;
+    }
+
+    public Type(String nom, String image) {
+        this.nom = nom;
+        this.image = image;
     }
 
     public Type(String nom, Collection<Produit> produits, Collection<Menu> menus) {
@@ -56,6 +65,15 @@ public class Type implements Serializable {
     }
 
     //Autres Getters-Setters
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
     public Long getId() {
         return id;
     }

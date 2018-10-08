@@ -5,7 +5,7 @@
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 675px}
+/*.row.content {height: 675px}*/
 
 /* Set gray background color and 100% height */
 .sidenav {
@@ -28,6 +28,29 @@ footer {
         padding: 15px;
     }
     .row.content {height:auto;} 
+}
+
+
+#catalogue{
+    flex-direction: row;
+    width: 100%;
+}
+
+.card{
+    width: 250px; 
+    height: 200px;
+    border: none;
+}
+
+.card-body{
+    display: middle;
+    text-align: center;
+}
+
+
+
+.image{
+    height: 50px;
 }
 
 /*--------------- CDI1804 --------------- by CL --------------- CDI1804 ---------------*/

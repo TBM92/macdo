@@ -18,24 +18,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author cdi314
  */
-public class CreationDonnees implements sousController{
-    
-    
+public class CreationDonnees implements sousController {
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
+
         CreationDonneesLocal creationDonnees = lookupCreationDonneesLocal();
-        
         System.out.println("Debut de création");
-        
+
         creationDonnees.creerDonnes();
-        
+
         System.out.println("Creation des données");
-        
+
         return "/WEB-INF/creationdonnees.jsp";
     }
 
     private CreationDonneesLocal lookupCreationDonneesLocal() {
-        
         try {
             Context c = new InitialContext();
             return (CreationDonneesLocal) c.lookup("java:global/macdo/macdo-ejb/CreationDonnees!Beans.CreationDonneesLocal");
@@ -44,7 +42,5 @@ public class CreationDonnees implements sousController{
             throw new RuntimeException(ne);
         }
     }
-    
-    
 
 }

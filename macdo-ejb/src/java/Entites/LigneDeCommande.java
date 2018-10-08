@@ -36,8 +36,8 @@ public class LigneDeCommande implements Serializable {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Commande commande;
 
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "ligneDeCommande")
-    private Collection<Menu> menus;
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private Menu menu;
     
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, mappedBy = "ligneParent")
     private Collection<LigneDeCommande> sousLignesDeCommandes;
@@ -58,6 +58,7 @@ public class LigneDeCommande implements Serializable {
     private Produit produit;
     
     public LigneDeCommande() {
+        System.out.println(">>>>>>>>>>>LigneDeCommande");
         sousLignesDeCommandes = new ArrayList<>();
         optionGratuites = new ArrayList<>();
         supplementPayants = new ArrayList<>();
@@ -69,6 +70,7 @@ public class LigneDeCommande implements Serializable {
         this.quantite = quantite;
         this.prix = prix;
         this.tvaTaux = tvaTaux;
+        System.out.println("------------LigneDeCommande");
     }
 
     public LigneDeCommande(Integer quantite, Float prix, Float tvaTaux, Commande commande) {
@@ -89,6 +91,20 @@ public class LigneDeCommande implements Serializable {
         this.elements = elements;
         this.produit = produit;
     }
+
+    public LigneDeCommande(Produit produit, Integer quantite) {
+        this();
+        this.produit = produit;
+        this.prix = produit.getPrix();
+        this.tvaTaux = produit.getTva().getTaux();
+        this.quantite = quantite;
+    }
+    
+    public LigneDeCommande(Produit produit){
+        this(produit, 1);
+    }
+    
+    
 
     public Long getId() {
         return id;
@@ -130,13 +146,16 @@ public class LigneDeCommande implements Serializable {
         this.commande = commande;
     }
 
-    public Collection<Menu> getMenus() {
-        return menus;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setMenus(Collection<Menu> menus) {
-        this.menus = menus;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
+
+    
+    
 
     public Produit getProduit() {
         return produit;
@@ -194,7 +213,7 @@ public class LigneDeCommande implements Serializable {
         hash = 41 * hash + Objects.hashCode(this.prix);
         hash = 41 * hash + Objects.hashCode(this.tvaTaux);
         hash = 41 * hash + Objects.hashCode(this.commande);
-        hash = 41 * hash + Objects.hashCode(this.menus);
+        hash = 41 * hash + Objects.hashCode(this.menu);
         hash = 41 * hash + Objects.hashCode(this.sousLignesDeCommandes);
         hash = 41 * hash + Objects.hashCode(this.ligneParent);
         hash = 41 * hash + Objects.hashCode(this.optionGratuites);
@@ -228,7 +247,7 @@ public class LigneDeCommande implements Serializable {
         if (!Objects.equals(this.commande, other.commande)) {
             return false;
         }
-        if (!Objects.equals(this.menus, other.menus)) {
+        if (!Objects.equals(this.menu, other.menu)) {
             return false;
         }
         if (!Objects.equals(this.sousLignesDeCommandes, other.sousLignesDeCommandes)) {
@@ -254,7 +273,7 @@ public class LigneDeCommande implements Serializable {
 
     @Override
     public String toString() {
-        return "LigneDeCommande{" + "id=" + id + ", quantite=" + quantite + ", prix=" + prix + ", tvaTaux=" + tvaTaux + ", commande=" + commande + ", menus=" + menus + ", sousLignesDeCommandes=" + sousLignesDeCommandes + ", ligneParent=" + ligneParent + ", optionGratuites=" + optionGratuites + ", supplementPayants=" + supplementPayants + ", elements=" + elements + ", produit=" + produit + '}';
+        return "LigneDeCommande{" + "id=" + id + ", quantite=" + quantite + ", prix=" + prix + ", tvaTaux=" + tvaTaux + ", commande=" + commande + ", menus=" + menu + ", sousLignesDeCommandes=" + sousLignesDeCommandes + ", ligneParent=" + ligneParent + ", optionGratuites=" + optionGratuites + ", supplementPayants=" + supplementPayants + ", elements=" + elements + ", produit=" + produit + '}';
     }
     
     

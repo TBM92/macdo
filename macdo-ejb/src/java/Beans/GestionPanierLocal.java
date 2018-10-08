@@ -10,6 +10,7 @@ import Entites.Menu;
 import Entites.Produit;
 import java.util.ArrayList;
 import javax.ejb.Local;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -27,5 +28,16 @@ public interface GestionPanierLocal {
     public void removeArticle(Produit produit);
 
     public void setPanier(ArrayList<LigneDeCommande> panier);
+
+    public void removeArticle(Integer indiceOfPanier);
+
+    public void removeArticle(Menu produit);
+
+
+    public void persist(Object object);
+
+    public void addProduit(Long id);
+
+    public Produit getProduitById(Long id);
     
 }

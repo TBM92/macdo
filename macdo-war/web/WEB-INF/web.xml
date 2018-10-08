@@ -8,14 +8,21 @@
             <param-value>controlleur.secondaires.CreationDonnees</param-value>
         </init-param>
         <init-param>
-
             <param-name>MainTop</param-name>
             <param-value>controlleur.secondaires.MainTop</param-value>
         </init-param>
-  <init-param>
-     <param-name>MenuGaucheCtrl</param-name>
+        <init-param>
+            <param-name>MenuGaucheCtrl</param-name>
             <param-value>controlleur.secondaires.MenuGaucheCtrl</param-value>
-    </init-param>
+        </init-param>
+        <init-param>
+            <param-name>Panier</param-name>
+            <param-value>controlleur.secondaires.Panier</param-value>
+        </init-param>
+        <init-param>       
+            <param-name>CatalogueCtrl</param-name>
+            <param-value>controlleur.secondaires.CatalogueCtrl</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>controler</servlet-name>
@@ -37,5 +44,17 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>Beans.GestionPanierLocal</local>
         <ejb-link>macdo-ejb.jar#GestionPanier</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>GestionCatalogue</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>Beans.GestionCatalogueLocal</local>
+        <ejb-link>macdo-ejb.jar#GestionCatalogue</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>CreationDonnees1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>Beans.CreationDonneesLocal</local>
+        <ejb-link>macdo-ejb.jar#CreationDonnees</ejb-link>
     </ejb-local-ref>
 </web-app>
