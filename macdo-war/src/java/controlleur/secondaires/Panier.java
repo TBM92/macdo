@@ -6,6 +6,7 @@
 package controlleur.secondaires;
 
 import Beans.GestionPanierLocal;
+import Entites.Produit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -26,21 +27,29 @@ public class Panier implements sousController {
 
         GestionPanierLocal gestionPanier;
         HttpSession session = request.getSession();
-        gestionPanier = (GestionPanierLocal) session.getAttribute("gestionPanier");
+        gestionPanier
+                = (GestionPanierLocal) session.getAttribute("gestionPanier");
         if (gestionPanier == null) {
             gestionPanier = lookupGestionPanierLocal();
             session.setAttribute("gestionPanier", gestionPanier);
         }
-        
-        System.out.println(">>>>>>>>>>>>>>>"+gestionPanier);
-        
-        gestionPanier.addProduitInPanierById(1L);
-        gestionPanier.addProduitInPanierById(2L);
-        gestionPanier.addProduitInPanierById(3L);
-        
+
+        String numProduit = request.getParameter("add");
+
+        System.out.println("numProduit : " + numProduit);
+
+        if (numProduit != null) {
+
+            Long idProduit = Long.valueOf(numProduit);
+
+            Produit produit = gestionPanier.getProduitById(idProduit);
+            if (produit != null) {
+                gestionPanier.addArticle(produit);
+            }
+        }
         //session.setAttribute("panier", gestionPanier.getPanier());
-        
-        System.out.println("avant le webinf : "+gestionPanier.getPanier());
+
+        System.out.println("avant le webinf : " + gestionPanier.getPanier());
 
         return "/WEB-INF/panier.jsp";
     }

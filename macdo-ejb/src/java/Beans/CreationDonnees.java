@@ -102,7 +102,8 @@ public class CreationDonnees implements CreationDonneesLocal {
                 "Ce sont toujours les vedettes des restaurants. Créées à partir de pommes de terre à chair blanche, elles sont aussi longues que croustillantes. Cuites avec de l'huile végétale, elles sont servies avec du ketchup, de la sauce moutarde ou une sauce spéciale.", 
                 "./Images/GrandeFrite.png");
         produit2.setType(type3);
-        produit1.setTva(tva1);
+        produit2.setTva(tva1);
+        
         Produit produit3 = new Produit("GRAND COCA-COLA®", 2.6F, statut2, 
                 "50cl\n\n original taste = goût original", 
                 "./Images/GrandCoca.png");

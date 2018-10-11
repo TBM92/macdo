@@ -96,8 +96,11 @@ public class LigneDeCommande implements Serializable {
         this();
         this.produit = produit;
         this.prix = produit.getPrix();
+        if( produit.getTva()==null)
+            System.out.println(">>>>>>>>>>>>>>>>>>OOOOOPPPPPSSSS "+ produit.getNom());
         this.tvaTaux = produit.getTva().getTaux();
         this.quantite = quantite;
+        System.out.println("================ LigneDeCommande");
     }
     
     public LigneDeCommande(Produit produit){

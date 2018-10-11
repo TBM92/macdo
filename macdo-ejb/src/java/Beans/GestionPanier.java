@@ -36,9 +36,7 @@ public class GestionPanier implements GestionPanierLocal {
 
     @Override
     public void setPanier(ArrayList<LigneDeCommande> panier) {
-        
             this.panier = panier;
-        
     }
 
     @Override
