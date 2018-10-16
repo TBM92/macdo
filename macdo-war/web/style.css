@@ -55,8 +55,61 @@ footer {
 
 #panier {
     float: right;
-    width: 200px;
-    
-    
+    width: 220px;
+
+
+
 }
+
+#titlePAnier{
+    color: white;
+}
+
+#titlePAnier {
+
+    height: 90px;
+    background-color: #004812;
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -wekbit-border-radius: 5px 5px 0 0;
+    font-family: 'MuseoSlab700';
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 42px;
+    text-transform: uppercase;
+    position: relative;
+    padding-top: 10px;
+    z-index: 1;
+
+}
+
+#liste {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: left;
+}
+
+#total {
+    background-color: #004812;
+    padding: 5px 20px;
+    text-align: left;
+    color: white
+}
+
+#valider {
+    background: yellow;
+    -moz-border-radius: 0 0 5px 5px;
+    -wekbit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    color: white;
+    display: block;
+    font-family: 'MuseoSlab900';
+    font-size: 14px;
+    line-height: 63px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+
 /*--------------- CDI1804 --------------- by CL --------------- CDI1804 ---------------*/

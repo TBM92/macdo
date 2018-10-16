@@ -39,5 +39,7 @@ public interface GestionPanierLocal {
     public void addProduitInPanierById(Long id);
 
     public Produit getProduitById(Long id);
+
+    public void persistCommande();
     
 }

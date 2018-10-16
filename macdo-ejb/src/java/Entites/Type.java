@@ -3,11 +3,13 @@ package Entites;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -30,7 +32,7 @@ public class Type implements Serializable {
     @OneToMany(mappedBy = "type")
     private Collection<Produit> produits;
 
-    @OneToMany(mappedBy = "type")
+    @ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Collection<Menu> menus;
 
     //Constructeurs
@@ -40,15 +42,18 @@ public class Type implements Serializable {
     }
 
     public Type(String nom) {
+        this();
         this.nom = nom;
     }
 
     public Type(String nom, String image) {
+        this();
         this.nom = nom;
         this.image = image;
     }
 
     public Type(String nom, Collection<Produit> produits, Collection<Menu> menus) {
+        this();
         this.nom = nom;
         this.produits = produits;
         this.menus = menus;

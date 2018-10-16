@@ -14,11 +14,12 @@ public interface GestionCatalogueLocal {
 
     public List<Produit> selectProduitsCatalogue();
 
-    public List<Produit> selectProduitsCatalogue(Long idType);
-
-    public List<Menu> selectMenusCatalogue(Long idType);
-
     public List<Type> selectTypesCatalogue();
+
+    public List<Menu> selectMenusCatalogue(String nomType);
+
+    public List<Produit> selectProduitsCatalogue(String nomType);
+
     
     
 }

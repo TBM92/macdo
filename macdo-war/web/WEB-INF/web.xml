@@ -19,11 +19,11 @@
             <param-name>Panier</param-name>
             <param-value>controlleur.secondaires.Panier</param-value>
         </init-param>
-        <init-param>       
+        <init-param>
             <param-name>CatalogueCtrl</param-name>
             <param-value>controlleur.secondaires.CatalogueCtrl</param-value>
         </init-param>
-        <init-param>       
+        <init-param>
             <param-name>HomeCtrl</param-name>
             <param-value>controlleur.secondaires.HomeCtrl</param-value>
         </init-param>
@@ -60,5 +60,17 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>Beans.CreationDonneesLocal</local>
         <ejb-link>macdo-ejb.jar#CreationDonnees</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>GestionCatalogue1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>Beans.GestionCatalogueLocal</local>
+        <ejb-link>macdo-ejb.jar#GestionCatalogue</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>GestionCatalogue2</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>Beans.GestionCatalogueLocal</local>
+        <ejb-link>macdo-ejb.jar#GestionCatalogue</ejb-link>
     </ejb-local-ref>
 </web-app>

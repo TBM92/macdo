@@ -35,6 +35,9 @@ public class Panier implements sousController {
         }
 
         String numProduit = request.getParameter("add");
+        String produitPlus = request.getParameter("plus");
+        String produitMoins = request.getParameter("moins");
+        String valider = request.getParameter("valider");
 
         System.out.println("numProduit : " + numProduit);
 
@@ -47,7 +50,16 @@ public class Panier implements sousController {
                 gestionPanier.addArticle(produit);
             }
         }
-        //session.setAttribute("panier", gestionPanier.getPanier());
+
+        if (produitMoins != null) {
+            Long idPanier = Long.valueOf(produitMoins);
+
+        }
+
+        if (valider != null) {
+            gestionPanier.persistCommande();
+            return "/WEB-INF/commandevalider.jsp";
+        }
 
         System.out.println("avant le webinf : " + gestionPanier.getPanier());
 

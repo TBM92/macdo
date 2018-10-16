@@ -149,13 +149,13 @@ public class CreationDonnees implements CreationDonneesLocal {
         Produit produit9 = new Produit("PETITE FRITE", 1.8F, statut1, 
                 "Ce sont toujours les vedettes des restaurants. Créées à partir de pommes de terre à chair blanche, elles sont aussi longues que croustillantes. Cuites avec de l'huile végétale, elles sont servies avec du ketchup, de la sauce moutarde ou une sauce spéciale.", 
                 "./Images/petiteFrite.png");
-        produit9.getProprietes().add(propriete4);
-        produit9.setType(type4);
+        produit9.setType(type3);
         produit9.setTva(tva1);
         Produit produit10 = new Produit("MINUTE MAID® ORANGE (20CL)", 1.77F, statut2, 
                 "20cl", 
                 "./Images/minuteMaid20.png");
-        produit10.setType(type3);
+        produit10.getProprietes().add(propriete4);
+        produit10.setType(type4);
         produit10.setTva(tva1);
         Produit produit11 = new Produit("P'TITE POMME", 1.36F, statut2, 
                 "Apportez une note fruitée à votre repas. Craquez pour les savoureux quartiers de pommes croquants.", 
@@ -189,28 +189,60 @@ public class CreationDonnees implements CreationDonneesLocal {
                 Et les autres 'MENU MAXI BEST OF' sont par exmple à 13.95€TTC pour le signature,
                 etc.
         */
-        menu1.setType(type1);
+        menu1.getTypes().add(type1);
+        menu1.getTypes().add(type2);
+        menu1.getTypes().add(type3);
+        menu1.getTypes().add(type4);
         menu1.setTva(tva1);
         Menu menu2 = new Menu("MENU SALADE", 7.27F, 
                 "MENU SALADE\nMenu Salade", 
                 "./Images/menuSalade.png");
-        menu2.setType(type1);
+        menu2.getTypes().add(type1);
+        menu2.getTypes().add(type5);
+        menu2.getTypes().add(type4);
         menu2.setTva(tva1);
         Menu menu3 = new Menu("MENU BEST OF™", 7.0F, 
                 "LE MENU BEST OF, C'EST...\n1 sandwich au choix* - 1 portion moyenne de frites, ou de Deluxe Potatoes, ou 1 P'tite Salade - 1 bouteille d'Evian 33cl, ou 1 bouteille de Badoit 33cl, ou 1 Minute Maid orange 30cl, ou 1 soda 40cl.", 
                 "./Images/MenuBestOf&MenuMaxiBestOf.png");
-        menu3.setType(type1);
+        menu3.getTypes().add(type1);
+        menu3.getTypes().add(type2);
+        menu3.getTypes().add(type3);
+        menu3.getTypes().add(type4);
         menu3.setTva(tva1);
         Menu menu4 = new Menu("MENU HAPPY MEAL", 3.64F, 
                 "HAPPY MEAL\n- un plat au choix (McFish, Croque McDo, Hamburger, Cheeseburger, Chicken McNuggets)\n\n- un accompagnement au choix (Petite Frite, Crousties, Moyenne Deluxe Potatoes, P'tites Tomates)\n\n- une boisson gazeuse 25cl, ou un jus de fruits Bio ou un Minute Maid Orange 20cl, ou un Lipton Ice Tea 25cl, Evian 33cl\n\n- un dessert au choix (P'tite Pomme, Mon Bio à boire, Berlingo' ou le fruit du moment) et aussi choisissez entre un super jouet ou un beau livre.", 
                 "./Images/menuHappyMeal.png");
-        menu4.setType(type1);
-
+        menu4.getTypes().add(type1);
+        menu4.getTypes().add(type2);
+        menu4.getTypes().add(type3);
+        menu4.getTypes().add(type4);
+        menu4.getTypes().add(type6);
         menu4.setTva(tva1);
-
         menu4.getOptionGratuites().add(optionGratuite2);
         
+        
+        type1.getMenus().add(menu1);
+        type1.getMenus().add(menu2);
+        type1.getMenus().add(menu3);
+        type1.getMenus().add(menu4);
+        
+        type2.getMenus().add(menu1);
+        type2.getMenus().add(menu3);
+        type2.getMenus().add(menu4);
 
+        type3.getMenus().add(menu1);
+        type3.getMenus().add(menu3);
+        type3.getMenus().add(menu4);
+        
+        type4.getMenus().add(menu1);
+        type4.getMenus().add(menu2);
+        type4.getMenus().add(menu3);
+        type4.getMenus().add(menu4);
+        
+        type5.getMenus().add(menu2);
+        
+        type6.getMenus().add(menu4);
+        
         
         LigneDeCommande ligneDeCommande1 = new LigneDeCommande(1, menu1.getPrix(), tva1.getTaux(), commande1);
         ligneDeCommande1.setMenu(menu1);
