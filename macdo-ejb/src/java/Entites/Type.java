@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -32,13 +32,12 @@ public class Type implements Serializable {
     @OneToMany(mappedBy = "type")
     private Collection<Produit> produits;
 
-    @ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    private Collection<Menu> menus;
+    @ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private Menu menu;
 
     //Constructeurs
     public Type() {
         produits = new ArrayList();
-        menus = new ArrayList();
     }
 
     public Type(String nom) {
@@ -52,11 +51,11 @@ public class Type implements Serializable {
         this.image = image;
     }
 
-    public Type(String nom, Collection<Produit> produits, Collection<Menu> menus) {
+    public Type(String nom, Collection<Produit> produits, Menu menu) {
         this();
         this.nom = nom;
         this.produits = produits;
-        this.menus = menus;
+        this.menu = menu;
     }
 
     //Getters
@@ -95,12 +94,12 @@ public class Type implements Serializable {
         this.produits = produits;
     }
 
-    public Collection<Menu> getMenus() {
-        return menus;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setMenus(Collection<Menu> menus) {
-        this.menus = menus;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     //Autres

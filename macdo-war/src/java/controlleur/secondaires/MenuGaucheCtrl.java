@@ -17,8 +17,8 @@ public class MenuGaucheCtrl implements sousController, Serializable {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         GestionCatalogueLocal gestionCatalogue = lookupGestionCatalogueLocal();
-        List lesTypes = gestionCatalogue.selectTypesCatalogue();
-        request.setAttribute("types", lesTypes);
+        List lesMenus = gestionCatalogue.selectMenusCatalogue();
+        request.setAttribute("menus", lesMenus);
         String url= "/WEB-INF/menus/menu-gauche.jsp";
         return url;
     }

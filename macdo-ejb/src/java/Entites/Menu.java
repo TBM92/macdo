@@ -47,7 +47,7 @@ public class Menu implements Serializable{
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Collection<OptionGratuite> optionGratuites;
     
-    @ManyToMany (mappedBy = "menus", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @OneToMany (mappedBy = "menu")
     private Collection<Type> types;
     
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
@@ -56,9 +56,15 @@ public class Menu implements Serializable{
     public Menu() {
         optionGratuites = new ArrayList<>();
         ligneDeCommandes = new ArrayList<>();
-        types = new ArrayList<>();
+        types = new ArrayList();
     }
 
+    public Menu(String nom, String image) {
+        this();
+        this.nom = nom;
+        this.image = image;
+    }
+    
     public Menu(String nom, Float prix, String description, String image) {
         this();
         this.nom = nom;
@@ -117,6 +123,7 @@ public class Menu implements Serializable{
     }
 
     public Collection<Type> getTypes() {
+        System.out.println("*-*-*-*-*-*-*-*-*" + types);
         return types;
     }
 

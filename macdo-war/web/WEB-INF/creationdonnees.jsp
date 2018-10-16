@@ -22,7 +22,7 @@
                 <div class="col-sm-8 text-left"> 
                     <h1>Création des données OK !</h1>
                     </br>
-                    <a href="controler">Retour à l'accueil...</a>
+                    <a href="controler?section=HomeCtrl">Commander...</a>
                 </div>
             </div>
         </div>
